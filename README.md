@@ -11,19 +11,19 @@ An end-to-end Machine Learning solution designed to automate credit risk assessm
 
 ---
 
-### 🚀 Key Features
+###  Key Features
 * **Predictive Intelligence:** Real-time loan approval classification using optimized Naive Bayes.
 * **Interactive Dashboard:** Built with **Streamlit** for a seamless user experience.
 * **Financial Diagnostics:** Includes confidence scoring and class imbalance handling (SMOTE integration).
 * **Data Visualization:** Dynamic charts powered by **Plotly** to visualize credit trends.
 
-### 🛠 Tech Stack
+###  Tech Stack
 * **Language:** Python
 * **ML Libraries:** Scikit-learn, Pandas, NumPy
 * **Frontend/Deployment:** Streamlit, CSS3
 * **Visuals:** Plotly, Matplotlib
 
-### 📦 Installation & Setup
+###  Installation & Setup
 1. **Clone the Repo**
    ```bash
    git clone [https://github.com/mehranmushtaq/creditwise-loan-system.git](https://github.com/mehranmushtaq/creditwise-loan-system.git)
@@ -37,7 +37,7 @@ An end-to-end Machine Learning solution designed to automate credit risk assessm
    streamlit run app.py
    ```
  
-# Model Architecture
+### Model Architecture
 
 The system processes raw financial data through a robust pipeline:
 
@@ -49,16 +49,20 @@ The system processes raw financial data through a robust pipeline:
 
 4.Evaluation: Monitored via Precision-Recall curves and Confusion Matrices.
 
-# Repository Structure
+### Repository Structure
 ```
 ├── app.py              # Streamlit Web Interface
 ├── requirements.txt    # Project Dependencies
 └── README.md
 ```
 
-## Contributing
+### Contributing
 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
-Developed by Mehran Mushtaq B.Tech Computer Science Engineering Student
+Developed by **Mehran Mushtaq**
+```
+https://github.com/mehranmushtaq
+```
+B.Tech Computer Science Engineering Student
 
