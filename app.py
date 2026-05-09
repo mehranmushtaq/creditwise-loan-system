@@ -17,9 +17,6 @@ import plotly.express as px
 import warnings
 warnings.filterwarnings("ignore")
 
-# ─────────────────────────────────────────────
-# PAGE CONFIG
-# ─────────────────────────────────────────────
 
 st.set_page_config(
     page_title="CreditWise · Loan Approval",
@@ -28,9 +25,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ─────────────────────────────────────────────
-# CUSTOM CSS (dark financial aesthetic)
-# ─────────────────────────────────────────────
 
 st.markdown("""
 <style>
@@ -175,9 +169,6 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.5px; }
 </style>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# HEADER
-# ─────────────────────────────────────────────
 
 st.markdown("""
 <div class="cw-header">
@@ -228,15 +219,9 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# SMOTE TOGGLE
-# ─────────────────────────────────────────────
 
 use_smote = st.toggle("⚖️ Apply SMOTE (balance classes before training)", value=True)
 
-# ─────────────────────────────────────────────
-# DATA GENERATION
-# ─────────────────────────────────────────────
 
 @st.cache_data
 def generate_dataset(seed=42):
@@ -278,9 +263,6 @@ def generate_dataset(seed=42):
 
 df_raw = generate_dataset()
 
-# ─────────────────────────────────────────────
-# PREPROCESSING PIPELINE
-# ─────────────────────────────────────────────
 
 @st.cache_resource
 def build_pipeline(use_smote_flag):
@@ -350,9 +332,6 @@ with st.spinner("Training models..."):
 nb_model = pipeline["nb"]; scaler = pipeline["scaler"]; ohe = pipeline["ohe"]; ohe_cols = pipeline["ohe_cols"]
 le_edu = pipeline["le_edu"]; feat_cols = pipeline["feature_cols"]; model_metrics = pipeline["metrics"]
 
-# ─────────────────────────────────────────────
-# PREDICTION FUNCTION
-# ─────────────────────────────────────────────
 
 def predict(inputs: dict):
     row = pd.DataFrame([inputs])
@@ -370,9 +349,6 @@ def predict(inputs: dict):
     row_sc = scaler.transform(row)
     return nb_model.predict(row_sc)[0], nb_model.predict_proba(row_sc)[0]
 
-# ─────────────────────────────────────────────
-# LAYOUT
-# ─────────────────────────────────────────────
 
 col_form, col_result = st.columns([1.1, 0.9], gap="large")
 
@@ -448,9 +424,7 @@ with col_result:
                     '<div style="font-size:48px;margin-bottom:16px;">💳</div>'
                     '<div style="font-family:Syne,sans-serif;font-size:18px;font-weight:700;color:#e2e8f0;">Fill in details</div></div>', unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# TABS (Performance, Features, Confusion Matrix)
-# ─────────────────────────────────────────────
+
 st.markdown("<br>---", unsafe_allow_html=True)
 t1, t2, t3 = st.tabs(["📊 Model Comparison", "🔍 Feature Importance", "⚖️ Confusion Matrix"])
 
@@ -461,9 +435,6 @@ with t2:
 with t3:
     st.write("Confusion matrix heatmap...")
 
-# ─────────────────────────────────────────────
-# FOOTER
-# ─────────────────────────────────────────────
 st.markdown("""
 <div style="border-top:1px solid #1e2d45;padding-top:16px;display:flex;justify-content:space-between;">
   <span style="font-family:DM Mono,monospace;font-size:11px;color:#64748b;">CreditWise · Naive Bayes · sklearn</span>
