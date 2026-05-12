@@ -54,7 +54,7 @@ The project demonstrates a **rigorous, structured ML workflow**: Exploratory Dat
 
 -----
 
-## 🚀 Live Demo
+## Live Demo
 
 👉 **[creditwise-loan.streamlit.app](https://creditwise-loan.streamlit.app/)**
 
@@ -67,7 +67,7 @@ The live app allows you to:
 
 -----
 
-## ✨ Key Features
+## Key Features
 
 |Feature                        |Description                                                    |
 |-------------------------------|---------------------------------------------------------------|
@@ -82,7 +82,7 @@ The live app allows you to:
 
 -----
 
-## 🏗️ System Architecture
+## System Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
