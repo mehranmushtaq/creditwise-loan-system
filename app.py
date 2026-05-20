@@ -13,9 +13,7 @@ import plotly.graph_objects as go
 import warnings
 warnings.filterwarnings("ignore")
 
-# ─────────────────────────────────────────────
-# PAGE CONFIG
-# ─────────────────────────────────────────────
+
 
 st.set_page_config(
     page_title="CreditWise · Loan Approval",
@@ -24,9 +22,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ─────────────────────────────────────────────
-# CSS
-# ─────────────────────────────────────────────
+
 
 st.markdown("""
 <style>
@@ -66,9 +62,7 @@ h1, h2, h3 { font-family: 'Syne', sans-serif; letter-spacing: -0.5px; }
 </style>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# HEADER
-# ─────────────────────────────────────────────
+
 
 st.markdown("""
 <div style="display:flex;align-items:center;justify-content:space-between;
@@ -95,9 +89,7 @@ st.markdown("""
 </p>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# IMBALANCE BANNER
-# ─────────────────────────────────────────────
+
 
 st.markdown("""
 <div class="imbalance-banner">
@@ -129,9 +121,7 @@ st.markdown("""
 
 use_smote = st.toggle("⚖️ Apply SMOTE (balance classes before training)", value=True)
 
-# ─────────────────────────────────────────────
-# DATASET
-# ─────────────────────────────────────────────
+
 
 @st.cache_data
 def generate_dataset():
@@ -172,9 +162,6 @@ def generate_dataset():
 
 df_raw = generate_dataset()
 
-# ─────────────────────────────────────────────
-# METRICS
-# ─────────────────────────────────────────────
 
 @st.cache_data
 def compute_metrics(use_smote_flag):
@@ -215,9 +202,7 @@ def compute_metrics(use_smote_flag):
         }
     return out
 
-# ─────────────────────────────────────────────
-# SKLEARN OBJECTS
-# ─────────────────────────────────────────────
+
 
 @st.cache_resource
 def build_pipeline(use_smote_flag):
@@ -262,10 +247,6 @@ ohe_cols  = pipe["ohe_cols"]
 le_edu    = pipe["le_edu"]
 feat_cols = pipe["feature_cols"]
 
-# ─────────────────────────────────────────────
-# PREDICT
-# ─────────────────────────────────────────────
-
 def predict(inputs):
     row = pd.DataFrame([inputs])
     row["Education_Level"] = le_edu.transform(row["Education_Level"])
@@ -281,10 +262,6 @@ def predict(inputs):
     pred   = nb_model.predict(row_sc)[0]
     proba  = nb_model.predict_proba(row_sc)[0]
     return pred, proba
-
-# ─────────────────────────────────────────────
-# FORM + RESULT
-# ─────────────────────────────────────────────
 
 col_form, col_result = st.columns([1.1, 0.9], gap="large")
 
@@ -430,10 +407,6 @@ with col_result:
           </div>
         </div>""", unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# ANALYTICS
-# ─────────────────────────────────────────────
-
 st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("---")
 st.markdown("""
@@ -546,9 +519,6 @@ for col, lbl, val, clr in [(q1,"True Neg",int(tn),"#10b981"),(q2,"False Pos",int
       <div style="font-family:Syne,sans-serif;font-size:1.5rem;font-weight:800;color:{clr};">{val}</div>
     </div>""", unsafe_allow_html=True)
 
-# ─────────────────────────────────────────────
-# FOOTER
-# ─────────────────────────────────────────────
 
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
