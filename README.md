@@ -179,10 +179,4 @@ plotly>=5.18.0
 
 -----
 
-<div align="center">
-  <i>"From Tral, Kashmir — built everything from scratch, one commit at a time." 🚀</i>
-</div>
-
------
-
 ⭐ **Star this repo if you find it helpful!**
